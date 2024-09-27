@@ -23,26 +23,33 @@
                                  currency: 'EUR'})
 
 
-  const mode = ref('Оплата');
-  const modes = ref(['Проверка карты', 'Оплата']);               
+  const mode = ref<string>('Оплата');
+  const modes = ref<string[]>(['Проверка карты', 'Оплата']);               
  
   const currencies = ['RUB','USD','EUR']
 
   const status = ref<boolean>(false)
   const message = ref<string>('')
 
+  const buttonLabel = ref<string>('Оплатить')
+
   watch(mode, () => {
     if (mode.value === 'Оплата') {
          payment.value.paymentType = 'DEPOSIT'
+         buttonLabel.value = 'Оплатить'
     } else {
         payment.value.paymentType = 'CARDVERIFY'
         payment.value.amount = 0
-     } 
+        buttonLabel.value = 'Проверить'
+    } 
   })
 
 </script>
 
 <template>
+  <h2>Отправка</h2>
+  {{ payment }}
+  <h2>Результат</h2>
   {{ message }}
  
   <div class="grid" v-if="!status">
@@ -105,7 +112,7 @@
 
 
         <div class="field pt-5">
-            <Button :label="mode === 'Оплатить' ? 'Оплатить' : 'Проверить'" @click="() => {sendData(payment).then((res)=> message = res)}"/>
+            <Button :label="buttonLabel" @click="() => {sendData(payment).then((res)=> message = res)}"/>
         </div>
 
        </div>

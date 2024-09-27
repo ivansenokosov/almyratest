@@ -7,7 +7,7 @@ def payadmit(request):
     headers = {
         "accept": "application/json",
         "content-type": "application/json",
-        "Authorization": "Bearer kX7SWzlBdULAdn6eRTRheCW4eI7O5KfB"
+        "Authorization": "Bearer DmEyeLK5kF3LsGXe3rR5VFNo3xaah95e"
     }
 
     payload = {

@@ -14,23 +14,25 @@ export class AppController {
     const baseUrl = {sandbox :   "https://app-demo.payadmit.com",
                      production: "https://app.payadmit.com"}
 
-    const paymantPayadmit = {
-      "paymentType": "DEPOSIT",
-      "paymentMethod": "BASIC_CARD",
-      "amount": payment.amount.toString(),
-      "currency": payment.currency
-  }
+  //   const paymantPayadmit = {
+  //     "paymentType": "DEPOSIT",
+  //     "paymentMethod": "BASIC_CARD",
+  //     "amount": payment.amount.toString(),
+  //     "currency": payment.currency
+  // }
 
     const headers : AxiosRequestConfig = {
       headers: {
         "accept": "application/json",
         "content-type": "application/json",
-        "Authorization": "Bearer kX7SWzlBdULAdn6eRTRheCW4eI7O5KfB"
+        "Authorization": "Bearer DmEyeLK5kF3LsGXe3rR5VFNo3xaah95e"
       },
       // validateStatus: function (status: number) {
       //   return status === 200;
       // },
     };
+
+    console.log(payment)
 
     var data : string = ''
 
@@ -44,7 +46,7 @@ export class AppController {
     // });
 
     const response = await axios
-    .post(baseUrl.sandbox + '/api/v1/payments', paymantPayadmit, headers)
+    .post(baseUrl.sandbox + '/api/v1/payments', payment, headers)
     .then((result) => {
       data = JSON.stringify(result.data)
     })

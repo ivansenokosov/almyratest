@@ -15,9 +15,9 @@ export class AppService {
       "content-type": "application/json",
       "Authorization": "Bearer DmEyeLK5kF3LsGXe3rR5VFNo3xaah95e"
       },
-      // validateStatus: function (status: number) { 
-      //   return status === 200;
-      // },
+      validateStatus: function (status: number) { 
+        return status === 200;
+      },
       };
 
       console.log(payment)
